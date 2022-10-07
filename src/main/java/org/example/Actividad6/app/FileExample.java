@@ -1,6 +1,5 @@
 package org.example.Actividad6.app;
 
-import org.apache.log4j.BasicConfigurator;
 import org.example.Actividad6.entity.Superhero;
 import org.example.Actividad6.service.FileService;
 
@@ -10,7 +9,7 @@ import java.util.List;
 public class FileExample {
 
     public static void main(String[] args) throws IOException {
-        BasicConfigurator.configure();
+        //BasicConfigurator.configure();
 
         FileService fileService = new FileService();
 

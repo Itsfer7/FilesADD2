@@ -8,7 +8,7 @@ import java.io.*;
 
 public class FileService {
 
-    private final FileDAO filedao = new FileDAOImpl();
+    /*private final FileDAO filedao = new FileDAOImpl();
 
     public FileOutputStream listAndWriteFiles() throws FileNotFoundException {
         RandomAccessFile finalFile = filedao.listAndWriteFiles("/home/ivan/finalFile.txt", "rw");
@@ -56,5 +56,5 @@ public class FileService {
         } catch (IOException e) {
             throw new RuntimeException();
         }
-    }
+    }*/
 }

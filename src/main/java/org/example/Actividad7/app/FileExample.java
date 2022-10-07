@@ -7,7 +7,7 @@ public class FileExample {
     public static void main(String[] args) {
         FileService fileService = new FileService();
 
-        fileService.listAndWriteFiles();
-        fileService.readFile();
+        //fileService.listAndWriteFiles();
+        //fileService.readFile();
     }
 }
