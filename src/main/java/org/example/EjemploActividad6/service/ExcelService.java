@@ -1,30 +1,30 @@
-package org.example.Actividad6.service;
+package org.example.EjemploActividad6.service;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import org.example.Actividad6.dao.FileDAO;
-import org.example.Actividad6.dao.FileDAOImpl;
-import org.example.Actividad6.entity.Superhero;
+import org.example.EjemploActividad6.dao.FileDAO;
+import org.example.EjemploActividad6.dao.FileDAOImpl;
+import org.example.EjemploActividad6.entity.ComicInfoEntity;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-public class FileService {
+public class ExcelService {
 
     private final FileDAO filedao = new FileDAOImpl();
 
-    public List<Superhero> getList() {
+    public List<ComicInfoEntity> getList() {
         return filedao.getList();
     }
 
-    public void writeExcel(List<Superhero> listSuperhero, String excelFilePath) throws IOException {
+    public void writeExcel(List<ComicInfoEntity> listSuperhero, String excelFilePath) throws IOException {
         Workbook workbook = new HSSFWorkbook();
         Sheet sheet = workbook.createSheet();
 
         int rowCount = 0;
 
-        for (Superhero superhero : listSuperhero) {
+        for (ComicInfoEntity superhero : listSuperhero) {
             Row row = sheet.createRow(++rowCount);
             writeData(superhero, row, sheet);
         }
@@ -36,7 +36,7 @@ public class FileService {
 
     }
 
-    public void writeData(Superhero superhero, Row row, Sheet sheet) {
+    public void writeData(ComicInfoEntity superhero, Row row, Sheet sheet) {
 
         CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
         Font font = sheet.getWorkbook().createFont();
@@ -76,40 +76,14 @@ public class FileService {
         cell.setCellValue(superhero.getCreator());
 
         cell = row.createCell(4);
-        cell.setCellValue(superhero.getFirstAparition());
+        cell.setCellValue(superhero.getFirstApparition());
 
         cell = row.createCell(5);
-        cell.setCellValue(superhero.getDateAparition());
+        cell.setCellValue(superhero.getDateApparition());
     }
 
-    /*private void createHeaderRow(Sheet sheet) {
+    public void createExcelFile(String excelFilePath) {
+        ComicInfoEntity comicInfoEntity = new ComicInfoEntity();
+    }
 
-        CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
-        Font font = sheet.getWorkbook().createFont();
-        font.setBold(true);
-        font.setFontHeightInPoints((short) 16);
-        cellStyle.setFont(font);
-
-        Row row = sheet.createRow(0);
-
-        Cell cellSuperhero = row.createCell(1);
-        cellSuperhero.setCellStyle(cellStyle);
-        cellSuperhero.setCellValue("Super Héroe");
-
-        Cell cellCompay = row.createCell(2);
-        cellCompay.setCellStyle(cellStyle);
-        cellCompay.setCellValue("Compañia");
-
-        Cell cellCreator = row.createCell(3);
-        cellCreator.setCellStyle(cellStyle);
-        cellCreator.setCellValue("Creador");
-
-        Cell cellFirstAparition = row.createCell(4);
-        cellFirstAparition.setCellStyle(cellStyle);
-        cellFirstAparition.setCellValue("Primera aparición");
-
-        Cell cellDateAparition = row.createCell(5);
-        cellDateAparition.setCellStyle(cellStyle);
-        cellDateAparition.setCellValue("Fecha de aparición");
-    }*/
 }

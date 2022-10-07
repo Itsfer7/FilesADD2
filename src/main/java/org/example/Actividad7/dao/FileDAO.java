@@ -1,7 +1,8 @@
 package org.example.Actividad7.dao;
 
-import java.io.File;
+import java.io.RandomAccessFile;
 
 public interface FileDAO {
-    File[] listFiles(String directory);
+    RandomAccessFile listAndWriteFiles(String directory);
+    void readFile(RandomAccessFile finalFile);
 }

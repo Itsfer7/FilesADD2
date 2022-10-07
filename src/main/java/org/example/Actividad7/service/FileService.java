@@ -10,8 +10,8 @@ public class FileService {
 
     private final FileDAO filedao = new FileDAOImpl();
 
-    public void listAndWriteFiles() throws FileNotFoundException {
-        File[] files = filedao.listFiles("/home/ivan");
+    public FileOutputStream listAndWriteFiles() throws FileNotFoundException {
+        RandomAccessFile finalFile = filedao.listAndWriteFiles("/home/ivan/finalFile.txt", "rw");
         try {
             FileOutputStream writer = new FileOutputStream("/home/ivan/Actividad7.txt");
             for (File file : files) {
@@ -21,22 +21,25 @@ public class FileService {
                 } else {
                     fileEntity.setType("file");
                 }
-                writer.println("The file " + fileEntity.getName() + " is a " + fileEntity.getType());
+                writer.write(("The file " + fileEntity.getName() + " is a " + fileEntity.getType()).getBytes());
             }
             writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        return writer;
     }
 
-    public void readFile(RandomAccessFile file) throws FileNotFoundException {
-        RandomAccessFile reader = fileDAO.readFile(file);
+    public void readFile(RandomAccessFile finalFile) throws FileNotFoundException {
+        RandomAccessFile reader = fileDAO.readFile(finalFile);
         System.out.println("Leyendo el fichero...");
         int i = 1;
         try {
             reader.seek(0);
             while (reader.getFilePointer() < reader.length()) {
-                System.out.println(i + ". " + file.readInt());
+                System.out.println(i + ". " + finalFile.readInt());
                 i++;
             }
         } catch (IOException e) {

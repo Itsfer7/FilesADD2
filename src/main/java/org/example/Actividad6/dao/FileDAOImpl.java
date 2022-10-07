@@ -1,5 +1,6 @@
 package org.example.Actividad6.dao;
 
+import org.apache.poi.sl.usermodel.Sheet;
 import org.example.Actividad6.entity.Superhero;
 
 import java.util.Arrays;
@@ -26,6 +27,11 @@ public class FileDAOImpl implements FileDAO {
 
     @Override
     public void writeData(Superhero superhero) {
+
+    }
+
+    @Override
+    public void createHearderRow(Sheet sheet) {
 
     }
 }
