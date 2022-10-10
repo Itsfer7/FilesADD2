@@ -8,6 +8,7 @@ public class FileExample {
 
 
     public static void main(String[] args) {
+
         String folderName = args[0];
         FileService fileService = new FileService();
         fileService.createFileWithFileList(NOMBRE_FICHERO_RESULTADO, folderName);
