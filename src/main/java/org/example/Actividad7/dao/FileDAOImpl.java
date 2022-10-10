@@ -1,19 +1,25 @@
 package org.example.Actividad7.dao;
 
+import org.example.Actividad7.entity.FileInfoEntity;
+
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileDAOImpl implements FileDAO {
 
 
     @Override
-    public RandomAccessFile listAndWriteFiles(String directory) throws FileNotFoundException {
-        return new RandomAccessFile(directory, "rw");
-    }
-
-    @Override
-    public void readFile(RandomAccessFile finalFile) {
-
+    public List<FileInfoEntity> createInfoFile(File folder) {
+        for (File file : folder.listFiles()) {
+            FileInfoEntity fileInfoEntity = new FileInfoEntity();
+            fileInfoEntity.setName(file.getName());
+            if (file.isDirectory()) {
+                fileInfoEntity.setType("D");
+            } else {
+                fileInfoEntity.setType("F");
+            }
+        }
+        return new ArrayList<>();
     }
 }

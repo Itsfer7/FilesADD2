@@ -2,8 +2,6 @@ package org.example.EjemploActividad6.app;
 
 import org.example.EjemploActividad6.service.ExcelService;
 
-import java.io.IOException;
-
 public class ExcelExample {
 
     private static final String EXCEL_FILE_PATH = "/home/ivan/Actividad6_Superheroes.xlsx";

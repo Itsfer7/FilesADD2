@@ -1,9 +1,10 @@
 package org.example.Actividad7.dao;
 
-import java.io.FileNotFoundException;
-import java.io.RandomAccessFile;
+import org.example.Actividad7.entity.FileInfoEntity;
+
+import java.io.File;
+import java.util.List;
 
 public interface FileDAO {
-    RandomAccessFile listAndWriteFiles(String directory) throws FileNotFoundException;
-    void readFile(RandomAccessFile finalFile);
+    List<FileInfoEntity> createInfoFile(File folder);
 }
