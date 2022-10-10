@@ -15,6 +15,7 @@ public class FileService {
         File folder = new File(folderName);
         if (folder.exists() && folder.isDirectory()) {
             List<FileInfoEntity> fileInfoEntityList = fileDAO.createInfoFile(folder);
+            fileDAO.crearListado(fileInfoEntityList, nombreFicheroResultado);
         } else {
             System.out.println("El directorio no existe o no es una carpeta");
             throw new RuntimeException();

@@ -1,6 +1,7 @@
 package org.example.Actividad7.entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileInfoEntity {
@@ -55,5 +56,15 @@ public class FileInfoEntity {
 
     public void setSize(long size) {
         this.size = size;
+    }
+
+    // Método que devuelve el contenido de la entidad en formato String pero sin usar el propio toString
+    public String toPrint() {
+        return getName() + SEPARATOR + getType() + SEPARATOR + Arrays.toString(getPermissions().toArray()) + SEPARATOR + getSize();
+    }
+
+    @Override
+    public String toString() {
+        return getName() + SEPARATOR + getType() + SEPARATOR + Arrays.toString(getPermissions().toArray()) + SEPARATOR + getSize();
     }
 }

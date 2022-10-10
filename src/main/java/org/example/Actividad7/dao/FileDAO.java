@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface FileDAO {
     List<FileInfoEntity> createInfoFile(File folder);
+
+    void crearListado(List<FileInfoEntity> fileInfoEntityList, String nombreFicheroResultado);
 }
