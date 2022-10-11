@@ -1,30 +1,16 @@
 package org.example.Actividad8.service;
 
-import org.example.Actividad7.entity.FileInfoEntity;
+import org.example.Actividad8.dao.FileDAO;
+import org.example.Actividad8.dao.FileDAOImpl;
 
-import java.io.File;
-import java.util.List;
+import java.io.*;
 
 public class FileService {
-    public void createFileWithFiles(String nombreFicheroResultadoFicheros, String fileName) {
-        /*File folder = new File(fileName);
-        if (folder.exists() && folder.isFile()) {
-            List<FileInfoEntity> fileInfoEntityList = fileDAO.createInfoFile(folder);
-            fileDAO.crearListadoFicheros(fileInfoEntityList, nombreFicheroResultado);
-        } else {
-            System.out.println("El directorio no existe o no es una carpeta");
-            throw new RuntimeException();
-        }*/
-    }
 
-    public void createFileWithDirectories(String nombreFicheroResultadoDirectorios, String fileName) {
-        /*File folder = new File(fileName);
-        if (folder.exists() && folder.isFile()) {
-            List<FileInfoEntity> fileInfoEntityList = fileDAO.createInfoFile(folder);
-            fileDAO.crearListadoDirectorios(fileInfoEntityList, nombreFicheroResultado);
-        } else {
-            System.out.println("El directorio no existe o no es una carpeta");
-            throw new RuntimeException();
-        }*/
+    FileDAO fileDAO = new FileDAOImpl();
+
+    public void createBothFiles(String nombreFicheroResultadoDirectorios , String nombreFicheroResultadoFicheros, File mainFile) throws FileNotFoundException {
+        fileDAO.createFileWithDirectories(nombreFicheroResultadoDirectorios, mainFile);
+        fileDAO.createFileWithFiles(nombreFicheroResultadoFicheros, mainFile);
     }
 }
