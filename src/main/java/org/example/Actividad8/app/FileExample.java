@@ -21,9 +21,14 @@ public class FileExample {
         System.out.println(opcion);
         int i = opcion.indexOf(";");
         if(i != -1){
-            value = opcion.substring(i);
+            value = opcion.substring((i + 1));
         }
-        System.out.println(value);
-        // leer el caso despues de ;
+        if (value.startsWith("D")) {
+            System.out.println("Directorio");
+        } else if (value.startsWith("F")) {
+            System.out.println("Fichero");
+        } else {
+            System.out.println("Error");
+        }
     }
 }
